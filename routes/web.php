@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\V1\SpaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-// Route::fallback(function () {
-//     return redirect()->away($_ENV["API_REDIRECT"]);
+// Route::get('/', function () {
+//     return view('welcome');
 // });
+
+// Route::get('/test', [SpaceController::class, 'index']);
+
+
+Route::fallback(function () {
+    return redirect()->away($_ENV["API_REDIRECT"]);
+});

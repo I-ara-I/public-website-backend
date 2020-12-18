@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\SpecificationController;
+use App\Http\Controllers\API\V1\SpaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,18 @@ use App\Http\Controllers\API\V1\SpecificationController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-Route::get('/v1/packaging/specification/materials', [SpecificationController::class, 'getMaterials']);
-Route::get('/v1/packaging/specification/shapes', [SpecificationController::class, 'getShapes']);
-Route::get('/v1/packaging/specification/inputs', [SpecificationController::class, 'getInputs']);
-Route::get('/v1/packaging/specification/results', [SpecificationController::class, 'getEmptyResults']);
-Route::post('/v1/packaging/specification/results', [SpecificationController::class, 'getResults']);
+Route::prefix('v1/packaging/specification')->group(function () {
+    Route::get('/materials', [SpecificationController::class, 'getMaterials']);
+    Route::get('/shapes', [SpecificationController::class, 'getShapes']);
+    Route::get('/inputs', [SpecificationController::class, 'getInputs']);
+    Route::get('/results', [SpecificationController::class, 'getEmptyResults']);
+    Route::post('/results', [SpecificationController::class, 'getResults']);
+});
+
+Route::prefix('v1/packaging/area')->group(function () {
+    Route::get('/areas', [SpaceController::class, 'getAreas']);
+    Route::get('/areaInputs', [SpaceController::class, 'getAreaInputs']);
+    Route::get('/partInputs', [SpaceController::class, 'getPartInputs']);
+    Route::post('/calculateArea', [SpaceController::class, 'calculate']);
+});

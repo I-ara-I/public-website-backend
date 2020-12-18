@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SpecificationRequest;
-use App\Services\Packaging\SpecificationService;
+use App\Services\Packaging\Specification\SpecificationService;
 
 class SpecificationController extends Controller
 {

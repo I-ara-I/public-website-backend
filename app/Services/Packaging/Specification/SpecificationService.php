@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Packaging;
+namespace App\Services\Packaging\Specification;
 
 class SpecificationService
 {
